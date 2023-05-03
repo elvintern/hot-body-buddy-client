@@ -1,0 +1,272 @@
+@use './abstracts/variables.scss' as v;
+@use './abstracts/mixins.scss' as m;
+
+// ********************************************************************
+// General Style
+// ********************************************************************
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font: 1.6rem 'PT Sans', 'Lato';
+  color: v.$color-white;
+  min-height: 100vh;
+  background-color: v.$color-primary;
+}
+
+.main {
+  padding: v.$padding-section;
+}
+
+.paragraph {
+  font-size: 2.4rem;
+}
+
+.btn {
+  @include m.btn-style;
+
+  &:hover {
+    background-color: transparent;
+    color: v.$color-white;
+  }
+
+  &--first {
+    background-color: transparent;
+    color: v.$color-white;
+
+    &:hover {
+      background-color: v.$color-white;
+      color: v.$color-primary;
+    }
+  }
+
+  &--set {
+    display: inline-block;
+  }
+
+  &--signup {
+    margin-top: 4rem;
+  }
+
+  &--routine {
+    display: inline-block;
+    font-size: 2rem;
+    width: 10rem;
+    border: 2px solid v.$color-black;
+    margin-top: 2rem;
+
+    &:hover {
+      color: v.$color-primary;
+      border: 2px solid v.$color-primary;
+    }
+
+    &:first-of-type {
+      margin-right: 0.7rem;
+    }
+  }
+
+  &--exercise {
+    display: inline-block;
+    border: 2px solid v.$color-black;
+    width: 10rem;
+    padding: 0.5rem;
+    font-size: 1.8rem;
+    margin-left: 2rem;
+  }
+
+  &--workout {
+    background-color: v.$color-green;
+    margin-top: 3rem;
+  }
+}
+
+.form {
+  margin: 3rem auto 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  text-transform: capitalize;
+  flex: 1 1 30%;
+
+  &__container {
+    &--btns {
+      display: flex;
+      flex-direction: column;
+      margin-top: 3rem;
+      gap: 1rem;
+    }
+
+    &--set {
+      display: flex;
+      &--btns {
+        margin-top: 2rem;
+        justify-content: center;
+        gap: 3rem;
+      }
+    }
+  }
+
+  &__label {
+    text-align: left;
+    font-size: 2.7rem;
+    align-self: center;
+
+    &--set {
+      margin-right: 2rem;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    font-size: 2.5rem;
+    padding: 0.7rem;
+
+    &--radio {
+      margin-left: 2rem;
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+}
+
+.error {
+  font-size: 2.3rem;
+  color: v.$color-yellow;
+  text-transform: none;
+
+  &--404 {
+    font-size: 3rem;
+    margin-top: 5rem;
+  }
+}
+
+.heading {
+  text-transform: capitalize;
+
+  &--primary {
+    font-size: 3.2rem;
+
+    &--quote {
+      text-align: center;
+      color: v.$color-white;
+      margin-top: 1.5rem;
+    }
+  }
+
+  &--secondary {
+    font-size: 3rem;
+  }
+
+  &--tertiary {
+    font-size: 2.8rem;
+  }
+}
+
+.loading-image {
+  filter: grayscale(100%);
+  position: absolute;
+  top: 15vh;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.landing-img {
+  display: none;
+  filter: grayscale(100%);
+  height: 100vh;
+  z-index: 1;
+  flex: 1 1 80%;
+  border-radius: 3rem;
+  background: url('../assets/landing-1.jpg') center/cover;
+
+  &--signUp {
+    flex-basis: 50%;
+    background-image: url('../assets/landing-2.jpg');
+  }
+
+  &--profile {
+    flex-basis: 30%;
+    background-image: url('../assets/landing-3.jpg');
+  }
+
+  &--routines {
+    flex-basis: 30%;
+    background-image: url('../assets/landing-4.jpg');
+  }
+}
+
+.loading-icon {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* *************************************** */
+/* Media Stlye */
+/* *************************************** */
+/* Extra small devices (phones, less than 576px) */
+@media only screen and (max-width: 575.99px) {
+}
+/* Small devices (phones, 576px and up) */
+@media only screen and (min-width: 576px) {
+}
+/* Medium devices (tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .paragraph {
+    &--about {
+      width: 100%;
+    }
+  }
+}
+/* Large devices (desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .landing-img {
+    display: block;
+  }
+  .form {
+    &__label {
+      &--set {
+        margin: 0rem 2rem;
+      }
+    }
+
+    &__container {
+      &--set {
+        &--btns {
+          margin: 0 0 0 3rem;
+          gap: 2rem;
+        }
+      }
+    }
+  }
+
+  .btn {
+    &--signup {
+      margin: 5rem auto 0;
+      width: 60%;
+    }
+  }
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  html {
+    font-size: 70%;
+    scroll-behavior: smooth;
+  }
+}
