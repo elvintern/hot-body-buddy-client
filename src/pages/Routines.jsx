@@ -77,9 +77,12 @@ export default function Routines() {
       dispatch({ type: 'setIsDuplicated', payload: true });
       return;
     }
-
-    addNewRoutine();
-    resetInput(dispatch);
+    if (state.routineName && state.exercises.length > 0) {
+      addNewRoutine();
+      resetInput(dispatch);
+    } else {
+      console.log('error');
+    }
   }
 
   return (
