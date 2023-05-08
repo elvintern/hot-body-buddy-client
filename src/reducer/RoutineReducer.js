@@ -2,6 +2,7 @@ export default function RoutineReducer() {
   const initialState = {
     routineName: '',
     exercise: '',
+    suggestion: '',
     exercises: [],
     routines: [],
     editingRoutine: {},
@@ -17,6 +18,8 @@ export default function RoutineReducer() {
         return { ...state, routineName: action.payload };
       case 'setExercise':
         return { ...state, exercise: action.payload };
+      case 'setSuggestion':
+        return { ...state, suggestion: action.payload };
       case 'setExercises':
         return { ...state, exercises: action.payload };
       case 'addExercises':
