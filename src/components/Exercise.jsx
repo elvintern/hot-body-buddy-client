@@ -39,7 +39,6 @@ export default function Exercise({ exercise, performance, setPerformance }) {
       });
     } else {
       setIsValid(false);
-      console.log('error');
     }
   };
 
