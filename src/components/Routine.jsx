@@ -22,11 +22,12 @@ export default function Routine({
       <h3 className="heading heading--tertiary">{routine.routineName} </h3>
 
       <ShowExercises exercises={routine.exercises} />
-      <button className="btn btn--routine" onClick={handleEdit}>
+      <button type="button" className="btn btn--routine" onClick={handleEdit}>
         {editingRoutineId === routine._id ? 'Save' : 'Edit'}
       </button>
-      <button
+      <button type="button"
         className="btn btn--routine"
+
         onClick={(e) => deleteRoutine(e, routine._id)}
       >
         Delete

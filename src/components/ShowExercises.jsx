@@ -13,6 +13,7 @@ export default function ShowExercises({ exercises, deleteExercise, dispatch }) {
             {exercise}
             {deleteExercise && (
               <button
+                type="button"
                 className="btn btn--exercise"
                 onClick={(event) => deleteExercise(event, index, dispatch)}
               >
