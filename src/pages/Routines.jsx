@@ -24,7 +24,19 @@ export default function Routines() {
     fetchUserInfoById(userId).then((res) => {
       dispatch({ type: 'setRoutines', payload: res.routines });
     });
-  }, [userId, state.routines, state.exercises, state.editingRoutine]);
+
+    function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        inputRef.current.click();
+      }
+    }
+    document.addEventListener('keydown', handleKeyPress);
+  
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+
+  }, [userId, state.routines, state.exercises, state.editingRoutine, inputRef]);
 
   function addNewRoutine() {
     const newRoutine = {
@@ -52,14 +64,16 @@ export default function Routines() {
 
   function addExercise(event) {
     event.preventDefault();
-    if (state.exercise.length < 3) {
+    if ((!state.exercise || state.exercise.length < 3) && (!state.suggestion || state.suggestion.length < 3)) {
       dispatch({ type: 'setIsValid', payload: false });
       return;
-    } else {
-      dispatch({ type: 'setIsValid', payload: true });
+    } else if (state.exercise && !state.suggestion) {
       dispatch({ type: 'addExercises', payload: state.exercise });
-      dispatch({ type: 'setExercise', payload: '' });
+    } else if (!state.exercise && state.suggestion) {
+      dispatch({ type: 'addExercises', payload: state.suggestion });
     }
+    dispatch({ type: 'setIsValid', payload: true });
+    dispatch({ type: 'setExercise', payload: '' });
   }
 
   function handleSave(event) {
@@ -92,7 +106,6 @@ export default function Routines() {
         <RoutineForm
           state={state}
           dispatch={dispatch}
-          inputRef={inputRef}
           addExercise={addExercise}
         />
 
@@ -104,10 +117,10 @@ export default function Routines() {
         />
 
         <div className="form__container form__container--btns">
-          <button onClick={(e) => addExercise(e)} className="btn btn-add">
+          <button type="button" ref={inputRef} onClick={(e) => addExercise(e)} className="btn btn-add">
             Add
           </button>
-          <button onClick={(e) => handleSave(e)} className="btn btn-signup">
+          <button type="button" onClick={(e) => handleSave(e)} className="btn btn-signup">
             save
           </button>
           <Link to={`/profile/${userId}`} className="btn btn-signup">
