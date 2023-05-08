@@ -71,6 +71,7 @@ export default function Routines() {
       dispatch({ type: 'addExercises', payload: state.exercise });
     } else if (!state.exercise && state.suggestion) {
       dispatch({ type: 'addExercises', payload: state.suggestion });
+      dispatch({ type: 'setSuggestion', payload: '' });
     }
     dispatch({ type: 'setIsValid', payload: true });
     dispatch({ type: 'setExercise', payload: '' });
