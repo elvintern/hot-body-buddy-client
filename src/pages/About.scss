@@ -1,5 +1,4 @@
 .about {
-  // display: flex;
   margin-top: 3rem;
 
   &__image {
@@ -33,7 +32,7 @@
 
     &__image {
       margin-top: 2rem;
-      width: 100%;
+      width: 60%;
     }
 
     &__review {
@@ -45,6 +44,12 @@
 }
 /* Large devices (desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+    .about {
+    &__image {
+      margin-top: 2rem;
+      width: 50%;
+    }
+  }
 }
 /* Extra large devices (large desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
