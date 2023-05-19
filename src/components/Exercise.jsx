@@ -25,8 +25,8 @@ export default function Exercise({ exercise, performance, setPerformance }) {
 
   const handleClick = () => {
     const sortedRecords = records.sort((a, b) => a.sets - b.sets);
-    const reps = sortedRecords.map((record) => record.reps);
-    const weight = sortedRecords.map((record) => record.weight);
+    const reps = sortedRecords.map((record) => record.reps).slice(0, count);
+    const weight = sortedRecords.map((record) => record.weight).slice(0, count);
     if (reps.every((el) => el >= 1) && weight.every((el) => el >= 1)) {
       setIsDone(true);
 
