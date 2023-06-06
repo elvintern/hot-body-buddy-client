@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/hbb-logo.png';
 import Nav from './Nav';
@@ -18,8 +18,8 @@ const Header = () => {
   const navProps = {
     isLoggedIn,
     logout,
-    navRef,
     showNavbar,
+    navRef,
   };
 
   return (

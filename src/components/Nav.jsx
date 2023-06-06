@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,9 +5,14 @@ import { faRectangleXmark } from '@fortawesome/free-solid-svg-icons';
 
 const Nav = ({ navProps }) => {
   const userId = localStorage.getItem('id');
-  const { isLoggedIn, logout, navRef, showNavbar } = navProps;
+  const { isLoggedIn, logout, showNavbar, navRef } = navProps;
+
+  const hideNavbar = () => {
+    navRef.current.classList.remove('nav--responsive');
+  };
 
   const handleClick = () => {
+    hideNavbar();
     if (isLoggedIn) {
       logout();
       localStorage.clear();
@@ -17,13 +21,21 @@ const Nav = ({ navProps }) => {
 
   return (
     <nav ref={navRef} className="nav">
-      <Link className="nav__link" to={isLoggedIn ? `/profile/${userId}` : '/'}>
+      <Link
+        className="nav__link"
+        onClick={hideNavbar}
+        to={isLoggedIn ? `/profile/${userId}` : '/'}
+      >
         Home
       </Link>
-      <Link className="nav__link" to="/about">
+      <Link className="nav__link" onClick={hideNavbar} to="/about">
         About us
       </Link>
-      <Link className="nav__link" to={isLoggedIn ? `/profile/${userId}` : '/'}>
+      <Link
+        className="nav__link"
+        onClick={hideNavbar}
+        to={isLoggedIn ? `/profile/${userId}` : '/'}
+      >
         Profile
       </Link>
 
