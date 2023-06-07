@@ -16,12 +16,12 @@ export default defineConfig({
         theme_color: '#ffffff',
         icons: [
           {
-            src: '/assets/hbb-logo.png',
+            src: '/assets/hbb-logo-018a9c64.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: '/assets/hbb-logo.png',
+            src: '/assets/hbb-logo-018a9c64.png',
             sizes: '512x512',
             type: 'image/png',
           },
