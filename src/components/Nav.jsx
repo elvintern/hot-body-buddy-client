@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import './Nav.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRectangleXmark } from '@fortawesome/free-solid-svg-icons';
-import installApp from '../App';
+import { installApp } from '../App';
 
 const Nav = ({ navProps }) => {
   const userId = localStorage.getItem('id');
