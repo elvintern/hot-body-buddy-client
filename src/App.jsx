@@ -12,6 +12,36 @@ import '../src/styles/main.scss';
 import ProtectedRoutes from './ProtectedRoutes';
 import About from './pages/About';
 
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+
+  // Show a custom installation button or UI element
+  // Example: display a button with an "Install" label
+  // Replace 'install-button' with the ID of your button element
+  document.getElementById('install-button').style.display = 'block';
+});
+
+function installApp() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+
+    // Wait for the user's choice
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the installation prompt.');
+      } else {
+        console.log('User dismissed the installation prompt.');
+      }
+
+      // Reset the deferredPrompt variable
+      deferredPrompt = null;
+    });
+  }
+}
+
 function App() {
   return (
     <AuthProvider>

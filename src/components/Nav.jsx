@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import './Nav.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRectangleXmark } from '@fortawesome/free-solid-svg-icons';
+import installApp from '../App';
 
 const Nav = ({ navProps }) => {
   const userId = localStorage.getItem('id');
@@ -38,6 +39,15 @@ const Nav = ({ navProps }) => {
       >
         Profile
       </Link>
+
+      <button
+        id="install-button"
+        className="nav__link"
+        onClick={installApp}
+        style={{ display: 'none' }}
+      >
+        Install
+      </button>
 
       <Link className="nav__link" onClick={handleClick} to="/">
         {isLoggedIn ? 'Logout' : 'Login'}
