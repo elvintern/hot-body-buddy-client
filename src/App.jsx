@@ -24,7 +24,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
   document.getElementById('install-button').style.display = 'block';
 });
 
-function installApp() {
+export function installApp() {
   if (deferredPrompt) {
     deferredPrompt.prompt();
 

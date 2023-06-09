@@ -101,7 +101,6 @@ const updateUserPerformance = (userId, routineId, newPerformance) => {
   );
 };
 
-// export default fetchUserInfoById;
 export {
   fetchUserInfoById,
   fetchRoutineById,
