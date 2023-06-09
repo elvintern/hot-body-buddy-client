@@ -11,21 +11,25 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'robots.txt', 'img/**'],
       manifest: {
+        src: 'manifest.webmanifest.js',
         name: 'Hot Body Buddy',
         short_name: 'HBB',
         theme_color: '#ffffff',
         icons: [
           {
-            src: '/assets/hbb-logo-018a9c64.png',
+            src: '/src/assets/hbb-logo.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: '/assets/hbb-logo-018a9c64.png',
+            src: '/src/assets/hbb-logo.png',
             sizes: '512x512',
             type: 'image/png',
           },
         ],
+      },
+      workbox: {
+        // Workbox options
       },
     }),
     imagemin({
