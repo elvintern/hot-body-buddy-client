@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Quote from './components/Quote';
 import Home from './pages/Home';
@@ -12,15 +12,14 @@ import { AuthProvider } from './components/AuthContext';
 import '../src/styles/main.scss';
 import ProtectedRoutes from './ProtectedRoutes';
 import About from './pages/About';
-import { usePwa } from 'vite-plugin-pwa-utils';
 
 function App() {
-  const { deferredPrompt } = usePwa();
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (event) => {
       event.preventDefault();
-      deferredPrompt.current = event;
+      setDeferredPrompt(event);
       document.getElementById('install-button').style.display = 'block';
     };
 
@@ -32,21 +31,23 @@ function App() {
         handleBeforeInstallPrompt
       );
     };
-  }, [deferredPrompt]);
+  }, []);
 
-  function installApp() {
-    if (deferredPrompt.current) {
-      deferredPrompt.current.prompt();
+  const installApp = () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
 
-      deferredPrompt.current.userChoice.then((choiceResult) => {
+      deferredPrompt.userChoice.then((choiceResult) => {
         if (choiceResult.outcome === 'accepted') {
           console.log('User accepted the installation prompt.');
         } else {
           console.log('User dismissed the installation prompt.');
         }
+
+        setDeferredPrompt(null);
       });
     }
-  }
+  };
 
   return (
     <AuthProvider>
