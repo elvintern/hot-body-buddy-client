@@ -48,7 +48,12 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: './index.html',
-        serviceWorker: './serviceWorker.js', // Add this line
+        serviceWorker: './serviceWorker.js', // Update this path
+      },
+      output: {
+        entryFileNames: '[name].[hash].js',
+        chunkFileNames: '[name].[hash].js',
+        assetFileNames: '[name].[hash].[ext]',
       },
     },
   },

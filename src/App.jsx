@@ -34,6 +34,7 @@ function App() {
   }, []);
 
   const installApp = () => {
+    console.log('clicked');
     if (deferredPrompt) {
       deferredPrompt.prompt();
 
