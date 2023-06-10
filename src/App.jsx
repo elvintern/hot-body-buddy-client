@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
 import Header from './components/Header';
 import Quote from './components/Quote';
 import Home from './pages/Home';
@@ -11,38 +12,42 @@ import { AuthProvider } from './components/AuthContext';
 import '../src/styles/main.scss';
 import ProtectedRoutes from './ProtectedRoutes';
 import About from './pages/About';
-
-let deferredPrompt;
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-
-  // Show a custom installation button or UI element
-  // Example: display a button with an "Install" label
-  // Replace 'install-button' with the ID of your button element
-  document.getElementById('install-button').style.display = 'block';
-});
-
-export function installApp() {
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-
-    // Wait for the user's choice
-    deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the installation prompt.');
-      } else {
-        console.log('User dismissed the installation prompt.');
-      }
-
-      // Reset the deferredPrompt variable
-      deferredPrompt = null;
-    });
-  }
-}
+import { usePwa } from 'vite-plugin-pwa-utils';
 
 function App() {
+  const { deferredPrompt } = usePwa();
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (event) => {
+      event.preventDefault();
+      deferredPrompt.current = event;
+      document.getElementById('install-button').style.display = 'block';
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener(
+        'beforeinstallprompt',
+        handleBeforeInstallPrompt
+      );
+    };
+  }, [deferredPrompt]);
+
+  function installApp() {
+    if (deferredPrompt.current) {
+      deferredPrompt.current.prompt();
+
+      deferredPrompt.current.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the installation prompt.');
+        } else {
+          console.log('User dismissed the installation prompt.');
+        }
+      });
+    }
+  }
+
   return (
     <AuthProvider>
       <Router>
@@ -64,6 +69,13 @@ function App() {
           </Routes>
         </main>
       </Router>
+      <button
+        id="install-button"
+        onClick={installApp}
+        style={{ display: 'none' }}
+      >
+        Install
+      </button>
     </AuthProvider>
   );
 }
