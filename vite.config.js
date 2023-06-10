@@ -44,5 +44,13 @@ export default defineConfig({
       webp: {},
     }),
   ],
+  build: {
+    rollupOptions: {
+      input: {
+        main: './index.html',
+        serviceWorker: './serviceWorker.js', // Add this line
+      },
+    },
+  },
   assetsInclude: ['**/*.PNG'],
 });
