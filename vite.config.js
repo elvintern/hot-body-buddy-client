@@ -18,13 +18,13 @@ export default defineConfig({
         theme_color: '#ffffff',
         icons: [
           {
-            src: '/src/assets/hbb-logo.png',
+            src: './splash_screens/icon.png',
             sizes: '192x192',
             type: 'image/png',
             purpose: 'any maskable',
           },
           {
-            src: '/src/assets/hbb-logo.png',
+            src: './splash_screens/icon.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable',
@@ -49,8 +49,8 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: '/index.html',
-        serviceWorker: '/serviceWorker.js', // Update this path
+        main: './index.html',
+        serviceWorker: './serviceWorker.js', // Update this path
       },
       output: {
         entryFileNames: '[name].[hash].js',

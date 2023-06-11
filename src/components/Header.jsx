@@ -1,6 +1,6 @@
 import { useContext, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/hbb-logo.png';
+import logo from '../../public/assets/hbb-logo.png';
 import Nav from './Nav';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';

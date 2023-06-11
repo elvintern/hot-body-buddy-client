@@ -1,10 +1,9 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import profile from '../assets/profile.PNG';
-import previous from '../assets/previous.PNG';
-import today from '../assets/today.PNG';
-import routine from '../assets/routine.PNG';
-import workout from '../assets/workout.PNG';
+import profile from '../../public/assets/profile.PNG';
+import previous from '../../public/assets/previous.PNG';
+import today from '../../public/assets/today.PNG';
+import routine from '../../public/assets/routine.PNG';
+import workout from '../../public/assets/workout.PNG';
 
 import './About.scss';
 
