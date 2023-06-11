@@ -49,7 +49,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: './public/index.html',
+        main: './index.html',
         serviceWorker: './serviceWorker.js', // Update this path
       },
       output: {
