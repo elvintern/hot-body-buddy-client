@@ -38,7 +38,6 @@ const Nav = ({ navProps }) => {
       >
         Profile
       </Link>
-
       <Link className="nav__link" onClick={handleClick} to="/">
         {isLoggedIn ? 'Logout' : 'Login'}
       </Link>
