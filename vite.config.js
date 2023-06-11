@@ -18,13 +18,13 @@ export default defineConfig({
         theme_color: '#ffffff',
         icons: [
           {
-            src: './src/assets/hbb-logo.png',
+            src: './public/assets/hbb-logo.png',
             sizes: '192x192',
             type: 'image/png',
             purpose: 'any maskable',
           },
           {
-            src: './src/assets/hbb-logo.png',
+            src: './public/assets/hbb-logo.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable',
