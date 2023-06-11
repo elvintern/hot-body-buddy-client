@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import './Nav.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRectangleXmark } from '@fortawesome/free-solid-svg-icons';
@@ -19,6 +20,38 @@ const Nav = ({ navProps }) => {
     }
   };
 
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+
+  useEffect(() => {
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener(
+        'beforeinstallprompt',
+        handleBeforeInstallPrompt
+      );
+    };
+  }, []);
+
+  function handleBeforeInstallPrompt(event) {
+    event.preventDefault();
+    setDeferredPrompt(event);
+  }
+
+  function handleInstallClick() {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User installed the app');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+        setDeferredPrompt(null);
+      });
+    }
+  }
+
   return (
     <nav ref={navRef} className="nav">
       <Link
@@ -31,6 +64,14 @@ const Nav = ({ navProps }) => {
       <Link className="nav__link" onClick={hideNavbar} to="/about">
         About us
       </Link>
+      <button
+        id="install-button"
+        className="nav__link"
+        onClick={handleInstallClick}
+        style={{ display: deferredPrompt ? 'block' : 'none' }}
+      >
+        Install
+      </button>
       <Link
         className="nav__link"
         onClick={hideNavbar}

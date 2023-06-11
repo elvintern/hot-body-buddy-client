@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Quote from './components/Quote';
 import Home from './pages/Home';
@@ -14,37 +13,6 @@ import ProtectedRoutes from './ProtectedRoutes';
 import About from './pages/About';
 
 function App() {
-  const [deferredPrompt, setDeferredPrompt] = useState(null);
-
-  useEffect(() => {
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-
-    return () => {
-      window.removeEventListener(
-        'beforeinstallprompt',
-        handleBeforeInstallPrompt
-      );
-    };
-  }, []);
-
-  function handleBeforeInstallPrompt(event) {
-    event.preventDefault();
-    setDeferredPrompt(event);
-  }
-
-  function handleInstallClick() {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User installed the app');
-        } else {
-          console.log('User dismissed the install prompt');
-        }
-        setDeferredPrompt(null);
-      });
-    }
-  }
   return (
     <AuthProvider>
       <Router>
@@ -66,13 +34,6 @@ function App() {
           </Routes>
         </main>
       </Router>
-      <button
-        id="install-button"
-        onClick={handleInstallClick}
-        style={{ display: deferredPrompt ? 'block' : 'none' }}
-      >
-        Install
-      </button>
     </AuthProvider>
   );
 }
