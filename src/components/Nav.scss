@@ -31,6 +31,13 @@
       color: v.$color-primary;
       border-bottom: solid 2px v.$color-primary;
     }
+
+    &--install {
+      border: none;
+      font-family: 'PT Sans', 'Lato';
+      font-weight: 700;
+      background-color: transparent;
+    }
   }
 
   &__btn {
