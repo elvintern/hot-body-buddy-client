@@ -23,6 +23,7 @@ const Nav = ({ navProps }) => {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
 
   useEffect(() => {
+    console.log('test');
     const handleBeforeInstallPrompt = (event) => {
       event.preventDefault();
       setDeferredPrompt(event);
