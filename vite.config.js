@@ -11,7 +11,7 @@ export default defineConfig({
       registerType: 'prompt',
       includeAssets: ['favicon.ico', 'robots.txt', 'img/**'],
       manifest: {
-        src: 'manifest.webmanifest.js',
+        src: '/manifest.webmanifest.js',
         start_url: '/index.html',
         display: 'standalone',
         name: 'Hot Body Buddy',

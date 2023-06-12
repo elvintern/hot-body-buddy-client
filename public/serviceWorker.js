@@ -1,3 +1,13 @@
+self.addEventListener('beforeinstallprompt', (event) => {
+  // Prevent the default browser prompt
+  event.preventDefault();
+
+  // Store the event for later use
+  self.deferredPrompt = event;
+
+  // You can optionally show your custom install prompt here
+});
+
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open('version-1').then((cache) => {
