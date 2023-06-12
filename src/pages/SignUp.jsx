@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ValidCheck from '../components/ValidCheck';
 import useFocusInput from '../customHook/useFocusInput';
@@ -16,7 +16,9 @@ export default function SignUp() {
     email: '',
     password: '',
   });
+  const [confirmPassword, setConfirmPassword] = useState(null);
   const [isValid, setIsValid] = useState(true);
+  const [isPasswordValid, setIsPasswordValid] = useState(true);
   const inputRef = useFocusInput();
 
   const handleChange = (event) => {
@@ -29,26 +31,31 @@ export default function SignUp() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch(
-      'https://nodejs-production-a3bd.up.railway.app/api/v1/user/sign-up',
-      {
-        method: 'POST',
-        body: JSON.stringify(userInfo),
-        headers: {
-          'content-type': 'application/json',
-        },
+    if (userInfo.password === confirmPassword) {
+      setIsPasswordValid(true);
+      const response = await fetch(
+        'https://nodejs-production-a3bd.up.railway.app/api/v1/user/sign-up',
+        {
+          method: 'POST',
+          body: JSON.stringify(userInfo),
+          headers: {
+            'content-type': 'application/json',
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (data) {
+        setIsValid(true);
+        login();
+        localStorage.setItem('id', data);
+        navigate(`/profile/${data}`);
+      } else {
+        setIsValid(false);
       }
-    );
-
-    const data = await response.json();
-
-    if (data) {
-      setIsValid(true);
-      login();
-      localStorage.setItem('id', data);
-      navigate(`/profile/${data}`);
     } else {
-      setIsValid(false);
+      setIsPasswordValid(false);
     }
   };
 
@@ -149,6 +156,7 @@ export default function SignUp() {
             required
           />
         </div>
+        <ValidCheck isValid={isPasswordValid} message={'Check your password'} />
         <div className="form__container">
           <label htmlFor="password" className="form__label">
             password
@@ -159,6 +167,19 @@ export default function SignUp() {
             className="form__input"
             autoComplete="on"
             onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form__container">
+          <label htmlFor="password" className="form__label">
+            Confirm Password
+          </label>
+          <input
+            type="password"
+            name="password"
+            className="form__input"
+            autoComplete="on"
+            onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
         </div>

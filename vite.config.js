@@ -3,15 +3,17 @@ import react from '@vitejs/plugin-react';
 import imagemin from 'vite-plugin-imagemin';
 import { VitePWA } from 'vite-plugin-pwa';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      registerType: 'autoUpdate',
+      registerType: 'prompt',
+      devOptions: {
+        enabled: true,
+      },
       includeAssets: ['favicon.ico', 'robots.txt', 'img/**'],
       manifest: {
-        src: 'manifest.webmanifest.js',
+        src: '/manifest.webmanifest.js',
         start_url: '/index.html',
         display: 'standalone',
         name: 'Hot Body Buddy',
@@ -51,7 +53,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: './index.html',
-        serviceWorker: './serviceWorker.js', // Update this path
+        serviceWorker: './public/serviceWorker.js', // Update this path
       },
       output: {
         entryFileNames: '[name].[hash].js',
