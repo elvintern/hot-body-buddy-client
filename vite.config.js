@@ -51,7 +51,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: './index.html',
-        serviceWorker: './serviceWorker.js', // Update this path
+        serviceWorker: './public/serviceWorker.js', // Update this path
       },
       output: {
         entryFileNames: '[name].[hash].js',
