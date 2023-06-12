@@ -8,6 +8,9 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'prompt',
+      devOptions: {
+        enabled: true,
+      },
       includeAssets: ['favicon.ico', 'robots.txt', 'img/**'],
       manifest: {
         src: '/manifest.webmanifest.js',
