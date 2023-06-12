@@ -12,6 +12,7 @@ export default defineConfig({
       includeAssets: ['favicon.ico', 'robots.txt', 'img/**'],
       manifest: {
         src: 'manifest.webmanifest.js',
+        start_url: '/',
         display: 'standalone',
         name: 'Hot Body Buddy',
         short_name: 'HBB',
