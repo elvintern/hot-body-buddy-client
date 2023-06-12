@@ -68,7 +68,7 @@ const Nav = ({ navProps }) => {
         id="install-button"
         className="nav__link nav__link--install"
         onClick={handleInstallClick}
-        style={{ display: deferredPrompt ? 'block' : 'none' }}
+        style={{ display: 'block' }}
       >
         Install
       </button>
