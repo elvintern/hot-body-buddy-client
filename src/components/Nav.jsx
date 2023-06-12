@@ -23,20 +23,20 @@ const Nav = ({ navProps }) => {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
 
   useEffect(() => {
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    const handleBeforeInstallPrompt = (event) => {
+      event.preventDefault();
+      setDeferredPrompt(event);
+    };
+
+    self.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
 
     return () => {
-      window.removeEventListener(
+      self.removeEventListener(
         'beforeinstallprompt',
         handleBeforeInstallPrompt
       );
     };
   }, []);
-
-  function handleBeforeInstallPrompt(event) {
-    event.preventDefault();
-    setDeferredPrompt(event);
-  }
 
   function handleInstallClick() {
     if (deferredPrompt) {
