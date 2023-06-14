@@ -53,7 +53,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: './index.html',
-        serviceWorker: './public/serviceWorker.js', // Update this path
+        serviceWorker: './serviceWorker.js', // Update this path
       },
       output: {
         entryFileNames: '[name].[hash].js',
@@ -62,5 +62,10 @@ export default defineConfig({
       },
     },
   },
-  assetsInclude: ['**/*.PNG'],
+  assetsInclude: [
+    '**/*.PNG',
+    '**/*.png',
+    '**/*.jpg',
+    '/assets/loadingImages/**/*.jpg',
+  ],
 });
