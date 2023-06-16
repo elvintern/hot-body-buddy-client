@@ -6,37 +6,30 @@ function LoadingPage() {
   const [loadingImage, setLoadingImage] = useState(null);
 
   useEffect(() => {
-    if (window.innerWidth >= 992) {
-      setLoadingImage(landscape[Math.floor(Math.random() * landscape.length)]);
-    } else {
-      setLoadingImage(portrait[Math.floor(Math.random() * portrait.length)]);
-    }
+    const loadImage = async () => {
+      let randNum = 1;
+      if (window.innerWidth >= 992) {
+        randNum = Math.floor(Math.random() * 6) + 1;
+        setLoadingImage(
+          `../../public/assets/loadingImages/landscape-${randNum}.jpg`
+        );
+      } else {
+        randNum = Math.floor(Math.random() * 2) + 1;
+        setLoadingImage(
+          `../../public/assets/loadingImages/portrait-${randNum}.jpg`
+        );
+      }
+      console.log(randNum);
 
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 2000);
 
-    return () => clearTimeout(timer);
+      return () => clearTimeout(timer);
+    };
+
+    loadImage();
   }, []);
-
-  const landscape = Object.values(
-    import.meta.glob(
-      '../assets/loadingImages/landscape*.{png,jpg,jpeg,PNG,JPEG}',
-      {
-        eager: true,
-        as: 'url',
-      }
-    )
-  );
-  const portrait = Object.values(
-    import.meta.glob(
-      '../assets/loadingImages/portrait*.{png,jpg,jpeg,PNG,JPEG}',
-      {
-        eager: true,
-        as: 'url',
-      }
-    )
-  );
 
   return (
     <>
