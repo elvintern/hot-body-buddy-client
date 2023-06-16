@@ -67,7 +67,7 @@ export default defineConfig({
     '**/*.PNG',
     '**/*.png',
     '**/*.jpg',
-    '/assets/loadingImages/**/*.jpg',
+    '/loadingImages/**/*.jpg',
   ],
 
   server: {
