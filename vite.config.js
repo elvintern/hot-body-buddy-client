@@ -18,9 +18,9 @@ export default defineConfig({
     }),
     VitePWA({
       registerType: 'prompt',
-      // devOptions: {
-      //   enabled: true,
-      // },
+      devOptions: {
+        enabled: true,
+      },
       includeAssets: ['favicon.ico', 'robots.txt', 'img/**'],
       manifest: {
         src: '/manifest.webmanifest.js',
@@ -54,7 +54,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: './index.html',
-        serviceWorker: './serviceWorker.js', // Update this path
+        serviceWorker: './public/serviceWorker.js', // Update this path
       },
       output: {
         entryFileNames: '[name].[hash].js',
