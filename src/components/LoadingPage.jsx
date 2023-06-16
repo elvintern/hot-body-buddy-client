@@ -27,7 +27,7 @@ function LoadingPage() {
           `url(/assets/loadingImages/portrait-${randNum}.jpg) center/cover`
         );
       }
-      console.log(randNum);
+      console.log(loadingImage);
 
       const timer = setTimeout(() => {
         setIsLoading(false);
