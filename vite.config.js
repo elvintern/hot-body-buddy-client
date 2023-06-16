@@ -25,7 +25,7 @@ export default defineConfig({
       manifest: {
         src: '/manifest.webmanifest.js',
         start_url: '/index.html',
-        scope: 'https://react-frontend-production-c1b2.up.railway.app/',
+        scope: '/',
         display: 'standalone',
         name: 'Hot Body Buddy',
         short_name: 'HBB',
@@ -76,6 +76,7 @@ export default defineConfig({
     },
     mimeTypes: {
       'application/javascript': ['js'], // Add this line to configure the MIME type for JavaScript files
+      'text/html': ['js'],
     },
   },
 });
