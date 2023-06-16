@@ -69,4 +69,13 @@ export default defineConfig({
     '**/*.jpg',
     '/assets/loadingImages/**/*.jpg',
   ],
+
+  server: {
+    fs: {
+      strict: false,
+    },
+    mimeTypes: {
+      'application/javascript': ['js'], // Add this line to configure the MIME type for JavaScript files
+    },
+  },
 });
