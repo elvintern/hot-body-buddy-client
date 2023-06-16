@@ -11,12 +11,16 @@ self.addEventListener('beforeinstallprompt', (event) => {
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open('version-1').then((cache) => {
-      return cache.addAll([
-        '../',
-        '../index.html',
-        '../offline.html',
-        // Add any other assets you want to cache
-      ]);
+      return cache
+        .addAll([
+          './',
+          './index.html',
+          './offline.html',
+          // Add any other assets you want to cache
+        ])
+        .catch((error) => {
+          console.error('Failed to cache assets:', error);
+        });
     })
   );
 
