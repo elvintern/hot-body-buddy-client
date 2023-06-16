@@ -6,15 +6,26 @@ import { VitePWA } from 'vite-plugin-pwa';
 export default defineConfig({
   plugins: [
     react(),
+    imagemin({
+      gifsicle: {},
+      mozjpeg: {},
+      pngquant: {
+        quality: [0.7, 0.9],
+        speed: 4,
+      },
+      svgo: {},
+      webp: {},
+    }),
     VitePWA({
       registerType: 'prompt',
-      devOptions: {
-        enabled: true,
-      },
+      // devOptions: {
+      //   enabled: true,
+      // },
       includeAssets: ['favicon.ico', 'robots.txt', 'img/**'],
       manifest: {
         src: '/manifest.webmanifest.js',
         start_url: '/index.html',
+        scope: '/',
         display: 'standalone',
         name: 'Hot Body Buddy',
         short_name: 'HBB',
@@ -38,16 +49,6 @@ export default defineConfig({
         // Workbox options
       },
     }),
-    imagemin({
-      gifsicle: {},
-      mozjpeg: {},
-      pngquant: {
-        quality: [0.7, 0.9],
-        speed: 4,
-      },
-      svgo: {},
-      webp: {},
-    }),
   ],
   build: {
     rollupOptions: {
@@ -62,5 +63,20 @@ export default defineConfig({
       },
     },
   },
-  assetsInclude: ['**/*.PNG'],
+  assetsInclude: [
+    '**/*.PNG',
+    '**/*.png',
+    '**/*.jpg',
+    '/loadingImages/**/*.jpg',
+  ],
+
+  server: {
+    fs: {
+      strict: false,
+    },
+    mimeTypes: {
+      'application/javascript': ['js'], // Add this line to configure the MIME type for JavaScript files
+      'text/html': ['js'],
+    },
+  },
 });

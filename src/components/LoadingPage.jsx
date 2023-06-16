@@ -1,42 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import LoadingIcons from 'react-loading-icons';
+import landscape6 from '../../public/assets/loadingImages/landscape-6.jpg';
+import portrait1 from '../../public/assets/loadingImages/portrait-1.jpg';
 
 function LoadingPage() {
   const [isLoading, setIsLoading] = useState(true);
-  const [loadingImage, setLoadingImage] = useState(null);
+  const [isLandscape, setIsLandscape] = useState(true);
 
   useEffect(() => {
-    if (window.innerWidth >= 992) {
-      setLoadingImage(landscape[Math.floor(Math.random() * landscape.length)]);
-    } else {
-      setLoadingImage(portrait[Math.floor(Math.random() * portrait.length)]);
-    }
+    console.log(landscape6, portrait1);
+    const loadImage = async () => {
+      if (window.innerWidth >= 992) {
+        setIsLandscape(true);
+      } else {
+        setIsLandscape(false);
+      }
 
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 2000);
 
-    return () => clearTimeout(timer);
+      return () => clearTimeout(timer);
+    };
+
+    loadImage();
   }, []);
-
-  const landscape = Object.values(
-    import.meta.glob(
-      '../assets/loadingImages/landscape*.{png,jpg,jpeg,PNG,JPEG}',
-      {
-        eager: true,
-        as: 'url',
-      }
-    )
-  );
-  const portrait = Object.values(
-    import.meta.glob(
-      '../assets/loadingImages/portrait*.{png,jpg,jpeg,PNG,JPEG}',
-      {
-        eager: true,
-        as: 'url',
-      }
-    )
-  );
 
   return (
     <>
@@ -44,7 +32,9 @@ function LoadingPage() {
         <div
           className="loading-image"
           style={{
-            background: `url('${loadingImage}') center/cover`,
+            background: `url(${
+              isLandscape ? landscape6 : portrait1
+            }) center/cover`,
           }}
         >
           <LoadingIcons.BallTriangle className="loading-icon" width={'50rem'} />
