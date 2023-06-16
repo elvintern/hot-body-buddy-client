@@ -25,7 +25,7 @@ export default defineConfig({
       manifest: {
         src: '/manifest.webmanifest.js',
         start_url: '/index.html',
-        scope: '/',
+        scope: 'https://react-frontend-production-c1b2.up.railway.app/',
         display: 'standalone',
         name: 'Hot Body Buddy',
         short_name: 'HBB',
