@@ -67,6 +67,7 @@ export default defineConfig({
     '**/*.PNG',
     '**/*.png',
     '**/*.jpg',
+    '**/*.mp4',
     '/loadingImages/**/*.jpg',
   ],
 

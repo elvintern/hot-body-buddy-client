@@ -1,0 +1,8 @@
+.video-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5rem;
+  &__content {
+    width: 70%;
+  }
+}

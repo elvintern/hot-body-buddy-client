@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom';
+import DemoVideo from '../components/DemoVideo';
 import profile from '../../public/assets/profile.PNG';
 import previous from '../../public/assets/previous.PNG';
 import today from '../../public/assets/today.PNG';
 import routine from '../../public/assets/routine.PNG';
 import workout from '../../public/assets/workout.PNG';
-
 import './About.scss';
 
 export default function About() {
   return (
     <div className="about">
-      <div className="about__container"></div>
+      <DemoVideo />
       <h2 className="heading heading--secondary">
         Welcome to Hot Body Buddy!!
       </h2>
@@ -65,9 +65,9 @@ export default function About() {
           />
         </div>
         <p className="paragraph paragraph--about">
-          You can track your progress over time, seeing how far you've come and
-          what you can improve on. Hot Body Buddy is your perfect companion for
-          a healthier, happier you!
+          You can track your progress over time, seeing how far you&apos;ve come
+          and what you can improve on. Hot Body Buddy is your perfect companion
+          for a healthier, happier you!
         </p>
       </div>
 
