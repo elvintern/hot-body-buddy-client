@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import LoadingIcons from 'react-loading-icons';
-import landscape6 from '../../public/assets/loadingImages/landscape-6.jpg';
-import portrait1 from '../../public/assets/loadingImages/portrait-1.jpg';
+import landscape6 from '../assets/loadingImages/landscape-6.jpg';
+import portrait1 from '../assets/loadingImages/portrait-1.jpg';
 
 function LoadingPage() {
   const [isLoading, setIsLoading] = useState(true);
