@@ -1,8 +1,20 @@
 .video-container {
-  display: flex;
-  justify-content: center;
   margin-bottom: 5rem;
   &__content {
-    width: 70%;
+    width: 100%;
+  }
+}
+
+/* *************************************** */
+/* Media Stlye */
+/* *************************************** */
+/* Large devices (desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .video-container {
+    display: flex;
+    justify-content: center;
+    &__content {
+      width: 80%;
+    }
   }
 }
