@@ -1,13 +1,3 @@
-self.addEventListener('beforeinstallprompt', (event) => {
-  // Prevent the default browser prompt
-  event.preventDefault();
-
-  // Store the event for later use
-  self.deferredPrompt = event;
-
-  // You can optionally show your custom install prompt here
-});
-
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open('version-1').then((cache) => {
@@ -72,6 +62,23 @@ self.addEventListener('fetch', (event) => {
   );
 });
 
+// Add event listener for 'beforeinstallprompt'
+self.addEventListener('beforeinstallprompt', (event) => {
+  // Prevent the default browser prompt
+  event.preventDefault();
+
+  // Store the event for later use
+  self.deferredPrompt = event;
+
+  // You can optionally show your custom install prompt here
+});
+
+// Add event listener for 'appinstalled'
+self.addEventListener('appinstalled', (event) => {
+  console.log('App installed successfully');
+});
+
+// Add event listener for 'click'
 self.addEventListener('click', (event) => {
   if (event.target.id === 'install-button' && self.deferredPrompt) {
     self.deferredPrompt.prompt();
