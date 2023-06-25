@@ -48,7 +48,7 @@ self.addEventListener('fetch', (event) => {
           return response;
         }
 
-        return fetch(event.request).then((response) => {
+        return fetch(event.request, { redirect: 'follow' }).then((response) => {
           if (
             !response ||
             response.status !== 200 ||
