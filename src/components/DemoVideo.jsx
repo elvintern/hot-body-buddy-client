@@ -1,4 +1,4 @@
-import video from '../assets/HBB-DEMO.mp4';
+import video from '../../public/assets/HBB-DEMO.mp4';
 import './DemoVideo.scss';
 
 const DemoVideo = () => {

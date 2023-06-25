@@ -190,21 +190,21 @@ body {
   z-index: 1;
   flex: 1 1 80%;
   border-radius: 3rem;
-  background: url('../assets/landing-1.jpg') center/cover;
+  background: url('../../public/assets/landing-1.jpg') center/cover;
 
   &--signUp {
     flex-basis: 50%;
-    background-image: url('../assets/landing-2.jpg');
+    background-image: url('../../public/assets/landing-2.jpg');
   }
 
   &--profile {
     flex-basis: 30%;
-    background-image: url('../assets/landing-3.jpg');
+    background-image: url('../../public/assets/landing-3.jpg');
   }
 
   &--routines {
     flex-basis: 30%;
-    background-image: url('../assets/landing-4.jpg');
+    background-image: url('../../public/assets/landing-4.jpg');
   }
 }
 
