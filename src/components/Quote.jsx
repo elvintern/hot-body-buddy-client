@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Quote() {
   const [quote, setQuote] = useState({});
@@ -14,7 +14,10 @@ export default function Quote() {
 
   return (
     <>
-      <h1 className="heading heading--primary heading--primary--quote">
+      <h1
+        data-testid="quote"
+        className="heading heading--primary heading--primary--quote"
+      >
         {quote ? quote.quote : 'Loading...'}
       </h1>
     </>
