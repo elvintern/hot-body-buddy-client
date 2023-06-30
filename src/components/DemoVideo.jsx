@@ -4,7 +4,12 @@ import './DemoVideo.scss';
 const DemoVideo = () => {
   return (
     <div className="video-container">
-      <video className="video-container__content" src={video} controls></video>
+      <video
+        data-testid="video"
+        className="video-container__content"
+        src={video}
+        controls
+      ></video>
     </div>
   );
 };
