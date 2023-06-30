@@ -8,7 +8,6 @@ function LoadingPage() {
   const [isLandscape, setIsLandscape] = useState(true);
 
   useEffect(() => {
-    console.log(landscape6, portrait1);
     const loadImage = async () => {
       if (window.innerWidth >= 992) {
         setIsLandscape(true);
