@@ -61,7 +61,11 @@ export default function SignUp() {
 
   return (
     <div className="sign-up">
-      <form className="form form-signup" onSubmit={handleSubmit}>
+      <form
+        data-testid="form"
+        className="form form-signup"
+        onSubmit={handleSubmit}
+      >
         <div className="form__container">
           <label htmlFor="firstName" className="form__label">
             first name
@@ -106,36 +110,36 @@ export default function SignUp() {
           </label>
           <div className="form-pronounce">
             <div className="pronounce-container">
-              <label htmlFor="pronounce" className="form__label">
+              <label htmlFor="pronounce-he" className="form__label">
                 he/him
               </label>
               <input
                 type="radio"
-                name="pronounce"
+                name="pronounce-he"
                 className="form__input form__input--radio"
                 value="he/him"
                 onChange={handleChange}
               />
             </div>
             <div className="pronounce-container">
-              <label htmlFor="pronounce" className="form__label">
+              <label htmlFor="pronounce-she" className="form__label">
                 she/her
               </label>
               <input
                 type="radio"
-                name="pronounce"
+                name="pronounce-she"
                 className="form__input form__input--radio"
                 value="she/her"
                 onChange={handleChange}
               />
             </div>
             <div className="pronounce-container">
-              <label htmlFor="pronounce" className="form__label">
+              <label htmlFor="pronounce-they" className="form__label">
                 they/them
               </label>
               <input
                 type="radio"
-                name="pronounce"
+                name="pronounce-they"
                 className="form__input form__input--radio"
                 value="they/them"
                 onChange={handleChange}
@@ -171,12 +175,12 @@ export default function SignUp() {
           />
         </div>
         <div className="form__container">
-          <label htmlFor="password" className="form__label">
+          <label htmlFor="confirmPassword" className="form__label">
             Confirm Password
           </label>
           <input
             type="password"
-            name="password"
+            name="confirmPassword"
             className="form__input"
             autoComplete="on"
             onChange={(e) => setConfirmPassword(e.target.value)}
