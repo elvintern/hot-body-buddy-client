@@ -13,7 +13,7 @@
 }
 
 html {
-  font-size: 62.5%;
+  font-size: 50%;
   scroll-behavior: smooth;
 }
 
@@ -222,6 +222,10 @@ body {
 /* *************************************** */
 /* Medium devices (tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+  html {
+    font-size: 55%;
+  }
+
   .paragraph {
     &--about {
       width: 100%;
@@ -230,6 +234,10 @@ body {
 }
 /* Large devices (desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+  html {
+    font-size: 60%;
+  }
+
   .landing-img {
     display: block;
   }
@@ -260,7 +268,7 @@ body {
 /* Extra large devices (large desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   html {
-    font-size: 70%;
+    font-size: 62.5%;
     scroll-behavior: smooth;
   }
 }
