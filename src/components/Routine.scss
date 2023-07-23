@@ -5,3 +5,10 @@
   @include m.group-style;
   flex: 1 1 30%;
 }
+
+/* Large devices (desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .routine {
+    flex-basis: 35%;
+  }
+}
