@@ -25,9 +25,9 @@ export default function Routine({
       <button type="button" className="btn btn--routine" onClick={handleEdit}>
         {editingRoutineId === routine._id ? 'Save' : 'Edit'}
       </button>
-      <button type="button"
+      <button
+        type="button"
         className="btn btn--routine"
-
         onClick={(e) => deleteRoutine(e, routine._id)}
       >
         Delete

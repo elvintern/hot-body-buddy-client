@@ -105,6 +105,10 @@ body {
       flex-direction: column;
       margin-top: 3rem;
       gap: 1rem;
+
+      &--routines {
+        margin: 0;
+      }
     }
 
     &--set {
@@ -243,10 +247,16 @@ body {
   }
 
   .form {
-    &__container--routines {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
+    &__container {
+      &--routine {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+
+      &--btns {
+        flex-direction: row;
+      }
     }
   }
 }

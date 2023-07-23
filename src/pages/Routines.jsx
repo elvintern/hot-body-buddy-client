@@ -31,11 +31,10 @@ export default function Routines() {
       }
     }
     document.addEventListener('keydown', handleKeyPress);
-  
+
     return () => {
       document.removeEventListener('keydown', handleKeyPress);
     };
-
   }, [userId, state.routines, state.exercises, state.editingRoutine, inputRef]);
 
   function addNewRoutine() {
@@ -64,7 +63,10 @@ export default function Routines() {
 
   function addExercise(event) {
     event.preventDefault();
-    if ((!state.exercise || state.exercise.length < 3) && (!state.suggestion || state.suggestion.length < 3)) {
+    if (
+      (!state.exercise || state.exercise.length < 3) &&
+      (!state.suggestion || state.suggestion.length < 3)
+    ) {
       dispatch({ type: 'setIsValid', payload: false });
       return;
     } else if (state.exercise && !state.suggestion) {
@@ -110,24 +112,33 @@ export default function Routines() {
           addExercise={addExercise}
         />
 
-        <ShowRoutines
-          state={state}
-          dispatch={dispatch}
-          userId={userId}
-          handleSave={handleSave}
-        />
-
-        <div className="form__container form__container--btns">
-          <button type="button" ref={inputRef} onClick={(e) => addExercise(e)} className="btn btn-add">
+        <div className="form__container form__container--btns form__container--btns--routines">
+          <button
+            type="button"
+            ref={inputRef}
+            onClick={(e) => addExercise(e)}
+            className="btn btn-add"
+          >
             Add
           </button>
-          <button type="button" onClick={(e) => handleSave(e)} className="btn btn-signup">
+          <button
+            type="button"
+            onClick={(e) => handleSave(e)}
+            className="btn btn-signup"
+          >
             save
           </button>
           <Link to={`/profile/${userId}`} className="btn btn-signup">
             Go Back to Main
           </Link>
         </div>
+
+        <ShowRoutines
+          state={state}
+          dispatch={dispatch}
+          userId={userId}
+          handleSave={handleSave}
+        />
       </form>
     </div>
   );
