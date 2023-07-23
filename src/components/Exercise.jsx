@@ -89,7 +89,7 @@ export default function Exercise({ exercise, performance, setPerformance }) {
           isValid={isValid}
           message={'Please type in your Reps and Weight :)'}
         />
-        <button onClick={handleClick} className="btn">
+        <button onClick={handleClick} className="btn btn--done">
           done
         </button>
       </div>

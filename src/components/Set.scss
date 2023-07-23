@@ -2,19 +2,21 @@
 @use '../styles/abstracts/mixins.scss' as m;
 
 .set {
+  display: flex;
   margin-top: 2rem;
+  align-items: center;
   @include m.group-style;
 
   &:not(:first-child) {
     margin-top: 2rem;
   }
   &__count {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    margin-right: 1rem;
   }
 
   &__icon {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 }
 

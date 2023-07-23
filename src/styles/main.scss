@@ -109,27 +109,29 @@ body {
 
     &--set {
       display: flex;
+      margin-right: 2rem;
+
       &--btns {
-        margin-top: 2rem;
         justify-content: center;
-        gap: 3rem;
+        margin-right: 0;
+        gap: 1rem;
       }
     }
   }
 
   &__label {
     text-align: left;
-    font-size: 2.7rem;
+    font-size: 2rem;
     align-self: center;
 
     &--set {
-      margin-right: 2rem;
+      margin-right: 0.5rem;
     }
   }
 
   &__input {
     width: 100%;
-    font-size: 2.5rem;
+    font-size: 2rem;
     padding: 0.7rem;
 
     &--radio {
@@ -231,6 +233,14 @@ body {
       width: 100%;
     }
   }
+
+  .btn {
+    &--done {
+      @include m.btn-style;
+      width: 15rem;
+      margin: 0 auto;
+    }
+  }
 }
 /* Large devices (desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
@@ -270,5 +280,9 @@ body {
   html {
     font-size: 62.5%;
     scroll-behavior: smooth;
+  }
+
+  .main {
+    padding: 5% 10%;
   }
 }
