@@ -4,6 +4,7 @@
 .set {
   display: flex;
   margin-top: 2rem;
+  justify-content: center;
   align-items: center;
   @include m.group-style;
 

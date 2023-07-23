@@ -26,7 +26,7 @@
 @mixin group-style {
   background-color: v.$color-white;
   color: v.$color-black;
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 2rem;
 
   &:not(:last-child) {
