@@ -21,6 +21,8 @@ export default defineConfig({
       // devOptions: {
       //   enabled: true,
       // },
+      serviceWorker: false,
+
       includeAssets: ['favicon.ico', 'robots.txt', 'img/**'],
       manifest: {
         src: '/manifest.webmanifest.js',
