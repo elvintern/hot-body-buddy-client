@@ -31,6 +31,7 @@ export default function SignUp() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     if (userInfo.password === confirmPassword) {
       setIsPasswordValid(true);
       const response = await fetch(
@@ -115,7 +116,7 @@ export default function SignUp() {
               </label>
               <input
                 type="radio"
-                name="pronounce-he"
+                name="pronounce"
                 className="form__input form__input--radio"
                 value="he/him"
                 onChange={handleChange}
@@ -127,7 +128,7 @@ export default function SignUp() {
               </label>
               <input
                 type="radio"
-                name="pronounce-she"
+                name="pronounce"
                 className="form__input form__input--radio"
                 value="she/her"
                 onChange={handleChange}
@@ -139,7 +140,7 @@ export default function SignUp() {
               </label>
               <input
                 type="radio"
-                name="pronounce-they"
+                name="pronounce"
                 className="form__input form__input--radio"
                 value="they/them"
                 onChange={handleChange}
