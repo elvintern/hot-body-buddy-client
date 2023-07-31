@@ -1,20 +1,28 @@
 .video-container {
+  display: flex;
+  justify-content: center;
   margin-bottom: 5rem;
   &__content {
-    width: 100%;
+    width: 40%;
   }
 }
 
 /* *************************************** */
 /* Media Stlye */
 /* *************************************** */
+/* Small devices (phones, 576px and up) */
+@media only screen and (min-width: 576px) {
+  .video-container {
+    &__content {
+      width: 30%;
+    }
+  }
+}
 /* Large devices (desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .video-container {
-    display: flex;
-    justify-content: center;
     &__content {
-      width: 80%;
+      width: 20%;
     }
   }
 }
