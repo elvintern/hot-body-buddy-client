@@ -2,8 +2,15 @@
   margin-top: 3rem;
 
   &__image {
+    display: block;
+    width: 80%;
+    margin: 2rem auto 0;
+  }
+
+  &__review {
     width: 100%;
-    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -14,7 +21,7 @@
 @media only screen and (min-width: 576px) {
   .about {
     &__image {
-      width: 70%;
+      width: 45%;
     }
   }
 }
@@ -29,22 +36,20 @@
 
     &__image {
       margin-top: 2rem;
-      width: 60%;
+      width: 35%;
     }
 
     &__review {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
+      flex-direction: row;
     }
   }
 }
 /* Large devices (desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-    .about {
+  .about {
     &__image {
       margin-top: 2rem;
-      width: 50%;
+      width: 25%;
     }
   }
 }
