@@ -4,5 +4,10 @@
     &--check {
       color: v.$color-green-light;
     }
+
+    &--undo {
+      cursor: pointer;
+      color: v.$color-yellow;
+    }
   }
 }

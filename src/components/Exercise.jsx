@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Set from './Set.jsx';
 import ValidCheck from './ValidCheck.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDumbbell, faCheck } from '@fortawesome/free-solid-svg-icons';
+import {
+  faDumbbell,
+  faCheck,
+  faWrench,
+} from '@fortawesome/free-solid-svg-icons';
 import './Exercise.scss';
 
 export default function Exercise({ exercise, performance, setPerformance }) {
@@ -21,6 +25,10 @@ export default function Exercise({ exercise, performance, setPerformance }) {
     records,
     setRecords,
     exercise: exercise,
+  };
+
+  const undo = () => {
+    setIsDone(false);
   };
 
   const handleClick = () => {
@@ -74,10 +82,17 @@ export default function Exercise({ exercise, performance, setPerformance }) {
         <FontAwesomeIcon className="exercise__icon" icon={faDumbbell} />
         {exercise}{' '}
         {isDone ? (
-          <FontAwesomeIcon
-            className="exercise__icon exercise__icon--check"
-            icon={faCheck}
-          />
+          <>
+            <FontAwesomeIcon
+              className="exercise__icon exercise__icon--check"
+              icon={faCheck}
+            />
+            <FontAwesomeIcon
+              className="exercise__icon exercise__icon--undo"
+              icon={faWrench}
+              onClick={undo}
+            />
+          </>
         ) : null}
       </h3>
       <div
