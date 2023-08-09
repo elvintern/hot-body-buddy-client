@@ -35,7 +35,7 @@ export default function Exercise({ exercise, performance, setPerformance }) {
     const sortedRecords = records.sort((a, b) => a.sets - b.sets);
     const reps = sortedRecords.map((record) => record.reps).slice(0, count);
     const weight = sortedRecords.map((record) => record.weight).slice(0, count);
-    if (reps.every((el) => el >= 1) && weight.every((el) => el >= 1)) {
+    if (reps.every((el) => el !== null) && weight.every((el) => el !== null)) {
       setIsDone(true);
 
       setWorkoutResult(() => {
