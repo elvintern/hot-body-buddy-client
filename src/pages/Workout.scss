@@ -1,6 +1,8 @@
 .workout {
   margin-top: 3rem;
   display: flex;
+  flex-direction: column;
+  gap: 2rem;
 
   &__container {
     width: 100%;
@@ -14,9 +16,10 @@
 /* *************************************** */
 /* Media Stlye */
 /* *************************************** */
-/* Large devices (desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
+/* Small devices (Large phones, 500px and up) */
+@media only screen and (min-width: 500px) {
   .workout {
+    flex-direction: row;
     gap: 3rem;
     margin-top: 5rem;
   }

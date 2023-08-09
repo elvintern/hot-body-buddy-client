@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import {
   fetchRoutineById,
@@ -38,8 +38,43 @@ export default function Workout() {
     navigate(`/profile/${userId}`);
   };
 
+  const SetList = ({ id, reps, weight }) => {
+    return reps
+      .filter((el) => el > 0)
+      .map((rep, i) => (
+        <li className="set" key={`${id}-${i}`}>
+          {i + 1} set {rep} reps {weight[i]} kgs
+        </li>
+      ));
+  };
+
   return (
     <div className="workout">
+      <div className="workout-result">
+        {routine ? (
+          routine.prevPerformance ? (
+            <div className="result-container result-container--previous">
+              <h2 className="heading heading--secondary">
+                Previous Performance
+              </h2>
+              {routine.prevPerformance.map((el, i) => {
+                return (
+                  <div key={`${el._id}-${i}`} className="result result--prev">
+                    <h3 className="heading heading--tertiary">{el.exercise}</h3>
+                    <ul className="sets">
+                      <SetList id={el._id} reps={el.reps} weight={el.weight} />
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <p>No Previous Performance</p>
+          )
+        ) : (
+          <p>Loading</p>
+        )}
+      </div>
       <div className="workout__container">
         {isFinished ? (
           <>
