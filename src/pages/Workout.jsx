@@ -21,6 +21,7 @@ export default function Workout() {
       try {
         const res = await fetchRoutineById(userId, workoutId);
         setRoutine(res);
+        console.log(routine.prevPerformance);
       } catch (err) {
         console.error(err);
       }
@@ -52,7 +53,7 @@ export default function Workout() {
     <div className="workout">
       <div className="workout-result">
         {routine ? (
-          routine.prevPerformance ? (
+          routine.prevPerformance.length > 0 && (
             <div className="result-container result-container--previous">
               <h2 className="heading heading--secondary">
                 Previous Performance
@@ -68,8 +69,6 @@ export default function Workout() {
                 );
               })}
             </div>
-          ) : (
-            <p>No Previous Performance</p>
           )
         ) : (
           <p>Loading</p>
