@@ -21,7 +21,6 @@ export default function Workout() {
       try {
         const res = await fetchRoutineById(userId, workoutId);
         setRoutine(res);
-        console.log(routine.prevPerformance);
       } catch (err) {
         console.error(err);
       }
