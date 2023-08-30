@@ -18,9 +18,9 @@ export default defineConfig({
     }),
     VitePWA({
       registerType: 'prompt',
-      // devOptions: {
-      //   enabled: true,
-      // },
+      devOptions: {
+        enabled: true,
+      },
       serviceWorker: false,
 
       includeAssets: ['favicon.ico', 'robots.txt', 'img/**'],

@@ -11,6 +11,7 @@ import {
 import { resetInput } from '../utils/routines';
 import useFocusInput from '../customHook/useFocusInput';
 import RoutineReducer from '../reducer/RoutineReducer';
+import Swal from 'sweetalert2';
 
 export default function Routines() {
   const { userId } = useParams();
@@ -45,6 +46,10 @@ export default function Routines() {
     };
     addUserRoutine(userId, [...state.routines, newRoutine]);
     dispatch({ type: 'setIsValid', payload: true });
+    Swal.fire({
+      icon: 'success',
+      title: 'Successfully Saved!',
+    });
   }
 
   async function updateRoutine() {
@@ -56,6 +61,10 @@ export default function Routines() {
       };
       await updateUserRoutine(userId, state.editingRoutine._id, newRoutine);
       resetInput(dispatch);
+      Swal.fire({
+        icon: 'success',
+        title: 'Successfully Edited!',
+      });
     } catch (error) {
       console.log(error.message);
     }

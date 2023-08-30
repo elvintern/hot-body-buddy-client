@@ -1,5 +1,6 @@
 import Routine from '../components/Routine';
 import { deleteUserRoutine } from '../utils/index';
+import Swal from 'sweetalert2';
 
 export default function ShowRoutines({ state, dispatch, userId, handleSave }) {
   function editRoutine(event, id) {
@@ -11,6 +12,10 @@ export default function ShowRoutines({ state, dispatch, userId, handleSave }) {
   function deleteRoutine(event, id) {
     event.preventDefault();
     deleteUserRoutine(userId, id);
+    Swal.fire({
+      icon: 'success',
+      title: 'Successfully Deleted!',
+    });
   }
 
   return (
