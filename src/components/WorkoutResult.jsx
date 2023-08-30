@@ -1,6 +1,6 @@
 import './WorkoutResult.scss';
 
-export default function WorkoutResult({ routine, performance }) {
+export default function WorkoutResult({ performance }) {
   const SetList = ({ id, reps, weight }) => {
     return reps
       .filter((el) => el > 0)

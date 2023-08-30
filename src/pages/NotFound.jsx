@@ -1,5 +1,3 @@
-import React from 'react';
-
 function NotFound() {
   return (
     <p className="error--404">

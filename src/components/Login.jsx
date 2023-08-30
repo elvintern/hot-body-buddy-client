@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ValidCheck from './ValidCheck';
 import useFocusInput from '../customHook/useFocusInput';

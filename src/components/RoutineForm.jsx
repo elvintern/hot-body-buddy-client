@@ -1,8 +1,7 @@
-import React from 'react';
 import ShowExercises from '../components/ShowExercises';
 import ValidCheck from '../components/ValidCheck';
 import { deleteExercise } from '../utils/routines';
-import SearchBar from "./SearchBar";
+import SearchBar from './SearchBar';
 import './RoutineForm.scss';
 
 export default function RoutineForm({
@@ -11,7 +10,6 @@ export default function RoutineForm({
   inputRef,
   addExercise,
 }) {
-
   return (
     <>
       <div className="form__group">
@@ -39,7 +37,11 @@ export default function RoutineForm({
         <label htmlFor="userRoutine" className="form__label">
           add your exercise
         </label>
-        <SearchBar state={state} dispatch={dispatch} addExercise={addExercise} />
+        <SearchBar
+          state={state}
+          dispatch={dispatch}
+          addExercise={addExercise}
+        />
         <ValidCheck
           isValid={state.isValid}
           message={'Exercise name should be more than 2 letters'}

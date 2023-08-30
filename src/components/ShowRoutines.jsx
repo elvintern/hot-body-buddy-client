@@ -1,4 +1,3 @@
-import React from 'react';
 import Routine from '../components/Routine';
 import { deleteUserRoutine } from '../utils/index';
 

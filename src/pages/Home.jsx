@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import './Home.scss';
 import Login from '../components/Login';
 import { useNavigate } from 'react-router-dom';

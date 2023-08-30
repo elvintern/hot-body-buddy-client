@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import RoutineForm from '../components/RoutineForm';
 import ShowRoutines from '../components/ShowRoutines';

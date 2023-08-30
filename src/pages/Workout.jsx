@@ -51,8 +51,8 @@ export default function Workout() {
   return (
     <div className="workout">
       <div className="workout-result">
-        {routine ? (
-          routine.prevPerformance.length > 0 && (
+        {routine &
+          (routine.prevPerformance.length > 0 && (
             <div className="result-container result-container--previous">
               <h2 className="heading heading--secondary">
                 Previous Performance
@@ -68,10 +68,7 @@ export default function Workout() {
                 );
               })}
             </div>
-          )
-        ) : (
-          <p>Loading</p>
-        )}
+          ))}
       </div>
       <div className="workout__container">
         {isFinished ? (
