@@ -51,24 +51,31 @@ export default function Workout() {
   return (
     <div className="workout">
       <div className="workout-result">
-        {routine &
-          (routine.prevPerformance.length > 0 && (
-            <div className="result-container result-container--previous">
-              <h2 className="heading heading--secondary">
-                Previous Performance
-              </h2>
-              {routine.prevPerformance.map((el, i) => {
-                return (
-                  <div key={`${el._id}-${i}`} className="result result--prev">
-                    <h3 className="heading heading--tertiary">{el.exercise}</h3>
-                    <ul className="sets">
-                      <SetList id={el._id} reps={el.reps} weight={el.weight} />
-                    </ul>
-                  </div>
-                );
-              })}
-            </div>
-          ))}
+        {routine
+          ? routine.prevPerformance.length > 0 && (
+              <div className="result-container result-container--previous">
+                <h2 className="heading heading--secondary">
+                  Previous Performance
+                </h2>
+                {routine.prevPerformance.map((el, i) => {
+                  return (
+                    <div key={`${el._id}-${i}`} className="result result--prev">
+                      <h3 className="heading heading--tertiary">
+                        {el.exercise}
+                      </h3>
+                      <ul className="sets">
+                        <SetList
+                          id={el._id}
+                          reps={el.reps}
+                          weight={el.weight}
+                        />
+                      </ul>
+                    </div>
+                  );
+                })}
+              </div>
+            )
+          : null}
       </div>
       <div className="workout__container">
         {isFinished ? (
