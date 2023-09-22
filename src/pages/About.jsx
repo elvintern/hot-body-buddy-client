@@ -36,8 +36,7 @@ export default function About() {
           alt="test user's routine page"
         />
         <p className="paragraph">
-          With your Hot body buddy, you can customize your workout routines with
-          your own name!
+          With your Hot body buddy, you can customize your workout routines!
         </p>
       </div>
       <div className="about__container">
